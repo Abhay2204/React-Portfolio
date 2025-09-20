@@ -149,11 +149,60 @@ body {
   transform: translateZ(0);
 }
 
-/* Reduce motion for users who prefer it */
+/* Custom Cursor Styles */
+* {
+  cursor: none !important;
+}
+
+/* Crosshair glow animation */
+@keyframes crosshair-glow {
+  0%, 100% { 
+    filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.6)) drop-shadow(0 0 16px rgba(168, 85, 247, 0.4));
+  }
+  50% { 
+    filter: drop-shadow(0 0 12px rgba(34, 211, 238, 0.8)) drop-shadow(0 0 24px rgba(168, 85, 247, 0.6));
+  }
+}
+
+/* Scanning effect */
+@keyframes scan-line {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* RGB shift effect for clicking */
+@keyframes rgb-shift {
+  0% { filter: hue-rotate(0deg) saturate(1); }
+  25% { filter: hue-rotate(90deg) saturate(1.5); }
+  50% { filter: hue-rotate(180deg) saturate(2); }
+  75% { filter: hue-rotate(270deg) saturate(1.5); }
+  100% { filter: hue-rotate(360deg) saturate(1); }
+}
+
+/* Apply glow to crosshair */
+.crosshair-container {
+  animation: crosshair-glow 3s ease-in-out infinite;
+}
+
+.crosshair-clicking {
+  animation: rgb-shift 0.3s ease-in-out;
+}
+
+/* Futuristic grid overlay */
+@keyframes grid-pulse {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.3; }
+}
+
+/* Hide cursor on mobile and for reduced motion */
+@media (max-width: 768px) {
+  * {
+    cursor: auto !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    cursor: auto !important;
   }
 }

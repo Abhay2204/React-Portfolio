@@ -10,12 +10,14 @@ import Experience from './components/Experience'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ParallaxBackground from './components/ParallaxBackground'
+import CustomCursor from './components/CustomCursor'
 
 const App: FC = () => {
 
   return (
     <ThemeProvider>
       <div className="relative min-h-screen bg-white dark:bg-dark-900 text-gray-900 dark:text-white transition-colors duration-300">
+        <CustomCursor />
         <ParallaxBackground />
         <Header />
         <main className="relative z-10">

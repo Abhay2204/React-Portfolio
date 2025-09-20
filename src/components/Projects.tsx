@@ -219,19 +219,19 @@ const Projects: React.FC = () => {
               ✨ Portfolio Showcase
             </span>
           </motion.div>
-          
+
           <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
             Developed Projects
           </h2>
-          
+
           <div className="flex items-center justify-center gap-4 mb-8">
             <div className="h-1 w-16 bg-gradient-to-r from-transparent to-primary-500 rounded-full"></div>
             <div className="h-2 w-8 bg-gradient-to-r from-primary-500 to-purple-600 rounded-full"></div>
             <div className="h-1 w-16 bg-gradient-to-r from-purple-600 to-transparent rounded-full"></div>
           </div>
-          
+
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            A comprehensive showcase of my work across web development, mobile apps, and AI/ML projects. 
+            A comprehensive showcase of my work across web development, mobile apps, and AI/ML projects.
             Each project represents a unique challenge solved with modern technology.
           </p>
         </motion.div>
@@ -260,11 +260,10 @@ const Projects: React.FC = () => {
                       setFilter(category.id)
                       setShowAll(false) // Reset to show only 6 when changing filter
                     }}
-                    className={`relative flex items-center gap-2 px-6 py-3 rounded-full font-semibold whitespace-nowrap transition-all duration-300 ${
-                      filter === category.id
-                        ? 'bg-gradient-to-r from-primary-500 to-purple-600 text-white shadow-lg shadow-primary-500/25 transform scale-105'
-                        : 'bg-white/80 dark:bg-dark-800/80 backdrop-blur-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-700/70 border border-gray-200/50 dark:border-dark-600/50 hover:border-primary-300 dark:hover:border-primary-600'
-                    }`}
+                    className={`relative flex items-center gap-2 px-6 py-3 rounded-full font-semibold whitespace-nowrap transition-all duration-300 ${filter === category.id
+                      ? 'bg-gradient-to-r from-primary-500 to-purple-600 text-white shadow-lg shadow-primary-500/25 transform scale-105'
+                      : 'bg-white/80 dark:bg-dark-800/80 backdrop-blur-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-700/70 border border-gray-200/50 dark:border-dark-600/50 hover:border-primary-300 dark:hover:border-primary-600'
+                      }`}
                   >
                     {/* Active indicator */}
                     {filter === category.id && (
@@ -274,19 +273,18 @@ const Projects: React.FC = () => {
                         transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                       />
                     )}
-                    
+
                     <div className="relative z-10 flex items-center gap-2">
                       <Filter size={16} />
                       <span>{category.name}</span>
-                      
+
                       {/* Project count badge */}
-                      <span className={`text-xs px-2 py-0.5 rounded-full transition-all duration-300 ${
-                        filter === category.id
-                          ? 'bg-white/20 text-white'
-                          : 'bg-gray-200 dark:bg-dark-600 text-gray-600 dark:text-gray-400'
-                      }`}>
-                        {category.id === 'all' 
-                          ? projects.length 
+                      <span className={`text-xs px-2 py-0.5 rounded-full transition-all duration-300 ${filter === category.id
+                        ? 'bg-white/20 text-white'
+                        : 'bg-gray-200 dark:bg-dark-600 text-gray-600 dark:text-gray-400'
+                        }`}>
+                        {category.id === 'all'
+                          ? projects.length
                           : projects.filter(p => p.category === category.id).length
                         }
                       </span>
@@ -295,12 +293,12 @@ const Projects: React.FC = () => {
                 ))}
               </div>
             </div>
-            
+
             {/* Fade indicators for scroll */}
             <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-gray-50 dark:from-dark-900 to-transparent pointer-events-none rounded-l-2xl opacity-50"></div>
             <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-gray-50 dark:from-dark-900 to-transparent pointer-events-none rounded-r-2xl opacity-50"></div>
           </div>
-          
+
           {/* Filter description */}
           <motion.div
             key={filter}
@@ -337,13 +335,12 @@ const Projects: React.FC = () => {
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.5, delay: index * 0.05, ease: 'easeOut' }}
                 whileHover={{ y: -8, scale: 1.02 }}
-                className={`group relative bg-white/70 dark:bg-dark-800/70 backdrop-blur-sm rounded-2xl shadow-xl hover:shadow-2xl border border-gray-200/50 dark:border-dark-600/50 transition-all duration-500 overflow-hidden ${
-                  project.featured ? 'ring-2 ring-primary-500/50 shadow-primary-500/10' : ''
-                }`}
+                className={`project-card group relative bg-white/70 dark:bg-dark-800/70 backdrop-blur-sm rounded-2xl shadow-xl hover:shadow-2xl border border-gray-200/50 dark:border-dark-600/50 transition-all duration-500 overflow-hidden ${project.featured ? 'ring-2 ring-primary-500/50 shadow-primary-500/10' : ''
+                  }`}
               >
                 {/* Gradient overlay for better visual appeal */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
+
                 <div className="relative overflow-hidden">
                   {/* Fixed aspect ratio container */}
                   <div className="relative w-full aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800">
@@ -439,7 +436,7 @@ const Projects: React.FC = () => {
             >
               {/* Button background animation */}
               <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-primary-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              
+
               <div className="relative flex items-center gap-3">
                 {showAll ? (
                   <>
@@ -455,7 +452,7 @@ const Projects: React.FC = () => {
                   </>
                 )}
               </div>
-              
+
               {/* Shine effect */}
               <div className="absolute inset-0 -top-1 -left-1 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
             </motion.button>
@@ -474,7 +471,7 @@ const Projects: React.FC = () => {
             {/* Background decoration */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-primary-500/10 to-purple-600/10 rounded-full -translate-y-32 translate-x-32"></div>
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-blue-500/10 to-teal-600/10 rounded-full translate-y-24 -translate-x-24"></div>
-            
+
             <div className="relative z-10 text-center mb-8">
               <h3 className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent mb-4">
                 Project Portfolio Overview
@@ -534,12 +531,12 @@ const Projects: React.FC = () => {
           >
             {/* Background animation */}
             <div className="absolute inset-0 bg-gradient-to-r from-gray-800 to-gray-900 dark:from-gray-200 dark:to-gray-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            
+
             <div className="relative flex items-center gap-3">
               <Eye size={20} />
               <span>View All Projects on GitHub</span>
             </div>
-            
+
             {/* Shine effect */}
             <div className="absolute inset-0 -top-1 -left-1 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
           </motion.a>
