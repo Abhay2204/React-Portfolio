@@ -49,7 +49,8 @@ const Skills = () => {
   const staggerContainer = {
     animate: {
       transition: {
-        staggerChildren: 0.06 // Reduced from complex delay calculations
+        staggerChildren: 0.1,
+        delayChildren: 0.1
       }
     }
   }
@@ -92,7 +93,7 @@ const Skills = () => {
                   transition: { duration: 0.4, ease: "easeOut" }
                 }
               }}
-              className="skill-card bg-gray-50 dark:bg-dark-800 p-8 rounded-2xl shadow-lg border border-gray-100 dark:border-dark-700"
+              className="skill-card bg-gray-50 dark:bg-dark-800 p-8 rounded-2xl shadow-lg border border-gray-100 dark:border-dark-700 transform-gpu"
             >
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-8 text-center pb-4 border-b border-gray-200 dark:border-dark-600">
                 {category.title}
@@ -114,13 +115,13 @@ const Skills = () => {
                       <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
+                        viewport={{ once: true, margin: "-50px" }}
                         transition={{
-                          duration: 0.8,
-                          delay: categoryIndex * 0.1 + skillIndex * 0.05,
-                          ease: "easeOut"
+                          duration: 1.2,
+                          delay: categoryIndex * 0.08 + skillIndex * 0.03,
+                          ease: [0.25, 0.46, 0.45, 0.94] // Custom cubic-bezier for smooth animation
                         }}
-                        className="h-full bg-gradient-to-r from-primary-500 to-purple-600 rounded-full"
+                        className="h-full bg-gradient-to-r from-primary-500 to-purple-600 rounded-full skill-bar"
                       />
                     </div>
                   </div>

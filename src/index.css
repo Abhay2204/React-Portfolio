@@ -130,3 +130,30 @@ body {
   60% { content: '..'; }
   80%, 100% { content: '...'; }
 }
+
+/* Smooth skill bar animations */
+.skill-bar {
+  transform: translateZ(0);
+  will-change: width;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.skill-card {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Hardware acceleration for smooth animations */
+.transform-gpu {
+  transform: translateZ(0);
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
