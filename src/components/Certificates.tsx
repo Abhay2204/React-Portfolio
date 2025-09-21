@@ -72,7 +72,7 @@ const Certificates = () => {
     }
   ]
 
-  const handleDownload = (certificateTitle: string) => {
+  const handleDownload = async (certificateTitle: string) => {
     const fileMap: { [key: string]: string } = {
       'Resume': '/documents/Abhay_M_Latest_8421822204_resume.pdf',
       'Essentials in Java for Professionals': '/documents/CADD Java.pdf',
@@ -86,10 +86,23 @@ const Certificates = () => {
 
     const filePath = fileMap[certificateTitle]
     if (filePath) {
-      const link = document.createElement('a')
-      link.href = filePath
-      link.download = filePath.split('/').pop() || 'download'
-      link.click()
+      try {
+        // Check if file exists first
+        const response = await fetch(filePath, { method: 'HEAD' })
+        if (response.ok) {
+          const link = document.createElement('a')
+          link.href = filePath
+          link.download = filePath.split('/').pop() || 'download'
+          document.body.appendChild(link)
+          link.click()
+          document.body.removeChild(link)
+        } else {
+          alert(`File not found: ${certificateTitle}. Please contact the site administrator.`)
+        }
+      } catch (error) {
+        console.error('Download error:', error)
+        alert(`Unable to download ${certificateTitle}. Please try again later.`)
+      }
     }
   }
 

@@ -779,14 +779,31 @@ const Hero: React.FC = () => {
               />
             </motion.button>
             
-            <motion.a
+            <motion.button
               whileHover={{
                 scale: 1.05,
                 boxShadow: `0 0 40px ${isDark ? 'rgba(168, 85, 247, 0.4)' : 'rgba(168, 85, 247, 0.3)'}`,
               }}
               whileTap={{ scale: 0.95 }}
-              href="/documents/Abhay_M_Latest_8421822204_resume.pdf"
-              download
+              onClick={async () => {
+                const filePath = '/documents/Abhay_M_Latest_8421822204_resume.pdf'
+                try {
+                  const response = await fetch(filePath, { method: 'HEAD' })
+                  if (response.ok) {
+                    const link = document.createElement('a')
+                    link.href = filePath
+                    link.download = 'Abhay_M_Latest_Resume.pdf'
+                    document.body.appendChild(link)
+                    link.click()
+                    document.body.removeChild(link)
+                  } else {
+                    alert('Resume file not found. Please contact me directly for the latest version.')
+                  }
+                } catch (error) {
+                  console.error('Download error:', error)
+                  alert('Unable to download resume. Please try again later.')
+                }
+              }}
               className={`group px-8 py-4 relative overflow-hidden rounded-full transition-all duration-300 ${
                 isDark
                   ? 'bg-white/10 border border-white/20 text-white hover:bg-white/20'
@@ -797,7 +814,7 @@ const Hero: React.FC = () => {
                 <Download size={16} className="group-hover:animate-bounce" />
                 RESUME
               </span>
-            </motion.a>
+            </motion.button>
           </motion.div>
 
           {/* Enhanced Social Links */}
